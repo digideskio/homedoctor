@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,10 +7,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Add new course</h1>
-        <form action="courses" method="POST">
-            Name <input type="text" name="coursename" /><br />
-            <input type="submit" value="Create user" />
-        </form>
+        <h1>Hello World!</h1>
+        <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
     </body>
 </html>

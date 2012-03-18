@@ -10,8 +10,7 @@
 
     <!-- osoitteiden rajoitus -->
     <http use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasRole('lecturer') or hasRole('assistant')" />
-        <intercept-url pattern="/student/**" access="hasRole('student')" />
+        <intercept-url pattern="/login" access="hasRole('customer') or hasRole('doctor')" />
         <intercept-url pattern="/**" access="permitAll" />
         
         <!-- huom! kun teet sovellusta tuotantokäyttöä varten, permitAll-oletus ei ole hyvä idea! /** -->
@@ -24,6 +23,6 @@
     
     <!-- käyttäjät kannasta -->
     <authentication-manager>
-        <authentication-provider user-service-ref="wadUserDetailsService" />
+        <authentication-provider user-service-ref="homedoctorUserDetailsService" />
     </authentication-manager>
 </beans:beans>
