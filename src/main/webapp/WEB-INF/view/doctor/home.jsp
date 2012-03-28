@@ -7,7 +7,7 @@
         <title>MediHome</title>
     </head>
     <body>
-        <h1>Hello Customer!</h1>
+        <h1>Hello Doctor!</h1>
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
     </body>
 </html>

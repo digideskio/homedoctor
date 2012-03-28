@@ -12,15 +12,20 @@ import tikaso.joosakur.homedoctor.domain.Customer;
 import tikaso.joosakur.homedoctor.formvalidation.CustomerFormObject;
 import tikaso.joosakur.homedoctor.service.CredentialsService;
 import tikaso.joosakur.homedoctor.service.CustomerService;
+import tikaso.joosakur.homedoctor.service.DoctorService;
 
 @Controller
 public class HomeController {
     
     @Autowired
-    CredentialsService credentialsService;
+    private CredentialsService credentialsService;
     
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
+    
+    @Autowired
+    private DoctorService doctorService;
+    
     
     @RequestMapping(value = "*")
     public String home() {
@@ -55,17 +60,17 @@ public class HomeController {
         return "home/registercomplete";
     }
 
-    /*@RequestMapping(value="registercomplete", method= RequestMethod.GET)
-    public String registerComplete(){
-        
-    }*/
-    
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
         if(customerService.find(credentialsService.getName())!=null) return "redirect:customer/home";
+        if(doctorService.find(credentialsService.getName())!=null) return "redirect:doctor/home";
         return "home/login";
         
     }
     
+    @RequestMapping(value = "/admin")
+    public String admin() {
+        return "redirect:admin/home";
+    }
     
 }

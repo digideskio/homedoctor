@@ -7,7 +7,15 @@
         <title>MediHome</title>
     </head>
     <body>
-        <h1>Hello Customer!</h1>
+        <h1>Hello Admin!</h1>
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
+        <p><a href="register">Register a new doctor.</a></p>
+        <h2>Current doctors</h2>
+        <ul>
+            <c:forEach var="doc" items="${doctors}">
+                <li>
+                    ${doc.lastName} ${doc.firstName}
+                </li>
+            </c:forEach>
     </body>
 </html>

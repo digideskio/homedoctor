@@ -43,7 +43,7 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
-    <beans profile="production">
+    <!--<beans profile="production">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>
         </bean>
@@ -54,12 +54,18 @@
             <property name="username" value="root"/>
             <property name="password" value=""/>
         </bean>
-    </beans>
+    </beans> -->
     
-    <beans profile="dev,default">
+    <beans profile="default">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-            <property name="properties" value="persistenceUnitName=persistenceUnitDev"/>
+            <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>
         </bean>
-        <jdbc:embedded-database id="dataSource" type="HSQL"/> 
+        
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="org.postgresql.Driver"/>
+            <property name="url" value="jdbc:postgresql://localhost/joosakur"/>
+            <property name="username" value="joosakur"/>
+            <property name="password" value="abd2076fbb30e655"/>
+        </bean>
     </beans>
-</beans>
+</beans>    

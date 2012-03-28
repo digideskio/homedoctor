@@ -4,21 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tikaso.joosakur.homedoctor.service.CredentialsService;
-import tikaso.joosakur.homedoctor.service.CustomerService;
+import tikaso.joosakur.homedoctor.service.DoctorService;
 
 @Controller
-@RequestMapping("/customer")
-public class CustomerController {
+@RequestMapping("/doctor")
+public class DoctorController {
     
     @Autowired
     private CredentialsService credentialsService;
     
     @Autowired
-    private CustomerService customerService;
+    private DoctorService doctorService;
     
     @RequestMapping(value = "*")
     public String home() {
-        return "customer/home";
+        return "doctor/home";
     }
     
     

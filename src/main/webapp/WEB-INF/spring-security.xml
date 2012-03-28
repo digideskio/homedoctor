@@ -11,6 +11,7 @@
     <!-- osoitteiden rajoitus -->
     <http use-expressions="true">
         <intercept-url pattern="/login" access="hasRole('customer') or hasRole('doctor')" />
+        <intercept-url pattern="/admin" access="hasRole('admin')" />
         <intercept-url pattern="/**" access="permitAll" />
         
         <!-- huom! kun teet sovellusta tuotantokäyttöä varten, permitAll-oletus ei ole hyvä idea! /** -->

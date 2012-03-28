@@ -12,9 +12,7 @@ public class CustomerServiceImpl implements CustomerService{
     
     @Autowired
     private CustomerRepository customerRepository;
-    @Autowired
-    private CredentialsService credentialsService;
-
+    
     @Override
     @Transactional
     public Customer createOrUpdate(Customer customer) {
