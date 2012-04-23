@@ -6,22 +6,22 @@ public class CustomerFormObject {
 
     @NotNull(message="Please insert your first name.")
     @Size(min=2, max=15, message="Name must be 2-15 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-ZäöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
     private String firstName;
     
     @NotNull(message="Please insert your last name.")
     @Size(min=2, max=20, message="Name must be 2-20 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-ZäöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
     private String lastName;
     
     @NotNull(message="Please insert the city.")
     @Size(min=2, max=20, message="City name must be 2-20 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-ZäöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
     private String city;
     
     @NotNull(message="Please insert your street address.")
     @Size(min=2, max=25, message="Address must be 2-25 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-Z0-9äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphanumeric characters, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z0-9 äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphanumeric characters, spaces and hyphen.")
     private String streetAddress;
     
     @NotNull(message="Please insert your phone number.")

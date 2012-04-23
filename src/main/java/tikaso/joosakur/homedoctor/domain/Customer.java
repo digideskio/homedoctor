@@ -1,7 +1,10 @@
 package tikaso.joosakur.homedoctor.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
+import tikaso.joosakur.homedoctor.formvalidation.CustomerFormObject;
 
 
 @Entity
@@ -24,8 +27,27 @@ public class Customer implements Serializable{
     private int monthBorn;
     private int yearBorn;
 
+    @OneToMany(mappedBy="customer")
+    private List<Reservation> reservations;
+    
     public Customer() {
         rolename="customer";
+        reservations = new ArrayList<Reservation>();
+    }
+
+    public Customer(CustomerFormObject formObj) {
+        rolename="customer";
+        reservations = new ArrayList<Reservation>();
+        
+        firstName=formObj.getFirstName();
+        lastName=formObj.getLastName();
+        city=formObj.getCity();
+        streetAddress=formObj.getStreetAddress();
+        phoneNumber=formObj.getPhoneNumber();
+        dayBorn=formObj.getDayBorn();
+        monthBorn=formObj.getMonthBorn();
+        yearBorn=formObj.getYearBorn();
+        password=formObj.getPassword();
     }
 
     public String getCity() {
@@ -137,5 +159,14 @@ public class Customer implements Serializable{
         username = String.valueOf(customerNro);
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    
     
 }

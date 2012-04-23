@@ -1,13 +1,10 @@
 package tikaso.joosakur.homedoctor.service;
 
-import java.util.List;
-import tikaso.joosakur.homedoctor.domain.Customer;
+import tikaso.joosakur.homedoctor.domain.Report;
 
-public interface CustomerService {
+public interface ReportService {
     
-    public Customer createOrUpdate(Customer customer);
-        
-    public Customer find(String username);
+    public Report createOrUpdate(Report report);
     
-    public List<Customer> findAllCustomers();
+    public Report findById(Long id);
 }

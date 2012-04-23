@@ -8,6 +8,9 @@
     </head>
     <body>
         <h1>Hello Customer!</h1>
+        <p><a href="dayanddoctorselection">Make a new reservation</a></p>
+        <p><a href="reservations">Show made reservations</a></p>
+        
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
     </body>
 </html>

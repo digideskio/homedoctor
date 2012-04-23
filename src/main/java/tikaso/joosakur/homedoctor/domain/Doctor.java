@@ -1,7 +1,10 @@
 package tikaso.joosakur.homedoctor.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
+import tikaso.joosakur.homedoctor.formvalidation.DoctorFormObject;
 
 
 @Entity
@@ -16,11 +19,27 @@ public class Doctor implements Serializable{
     private String firstName;
     private String lastName;
     private String rolename;
+
+    @OneToMany(mappedBy="doctor")
+    private List<Reservation> reservations;
     
     
     public Doctor() {
         rolename="doctor";
+        reservations = new ArrayList<Reservation>();
     }
+
+    public Doctor(DoctorFormObject formObj) {
+        rolename="doctor";
+        reservations = new ArrayList<Reservation>();
+        
+        firstName=formObj.getFirstName();
+        lastName=formObj.getLastName();
+        username=formObj.getUsername();
+        password=formObj.getPassword();
+    }
+    
+    
 
     public String getFirstName() {
         return firstName;
@@ -69,5 +88,15 @@ public class Doctor implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    
     
 }

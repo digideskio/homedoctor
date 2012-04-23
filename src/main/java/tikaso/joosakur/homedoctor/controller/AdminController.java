@@ -43,11 +43,7 @@ public class AdminController {
     public String create(@Valid @ModelAttribute("user") DoctorFormObject formObj, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) return "admin/register";
         
-        Doctor doctor = new Doctor();
-        doctor.setFirstName(formObj.getFirstName());
-        doctor.setLastName(formObj.getLastName());
-        doctor.setUsername(formObj.getUsername());
-        doctor.setPassword(formObj.getPassword());
+        Doctor doctor = new Doctor(formObj);
         doctor = doctorService.createOrUpdate(doctor);
         
         return "redirect:home";

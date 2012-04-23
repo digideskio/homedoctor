@@ -1,5 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +9,11 @@
         <title>MediHome</title>
     </head>
     <body>
-        <h1>Hello Doctor!</h1>
-        <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
+        <h1>My customers</h1>
+        <c:forEach var="customer" items="${customers}">
+            <a href="customer/${customer.id}">${customer.lastName} ${customer.firstName}</a> <br/>
+        </c:forEach>
+        <br/>
+        <a href="home">back to home</a>
     </body>
 </html>

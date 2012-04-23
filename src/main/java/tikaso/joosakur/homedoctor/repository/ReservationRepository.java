@@ -1,8 +1,8 @@
 package tikaso.joosakur.homedoctor.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tikaso.joosakur.homedoctor.domain.Customer;
+import tikaso.joosakur.homedoctor.domain.Reservation;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    public Customer findByUsername(String username);
+public interface ReservationRepository extends JpaRepository<Reservation, Long>, ReservationRepositoryCustom {
+    
 }

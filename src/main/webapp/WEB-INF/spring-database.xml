@@ -43,20 +43,15 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     
-    <!--<beans profile="production">
+    <beans profile="dev, default">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-            <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>
+            <property name="properties" value="persistenceUnitName=persistenceUnitDev"/>
         </bean>
-        
-        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/awesome"/>
-            <property name="username" value="root"/>
-            <property name="password" value=""/>
-        </bean>
-    </beans> -->
+        <jdbc:embedded-database id="dataSource" type="HSQL"/> 
+    </beans>
     
-    <beans profile="default">
+    
+    <beans profile="production">
         <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="properties" value="persistenceUnitName=persistenceUnitProduction"/>
         </bean>

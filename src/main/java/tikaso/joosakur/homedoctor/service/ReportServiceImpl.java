@@ -1,32 +1,26 @@
 package tikaso.joosakur.homedoctor.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tikaso.joosakur.homedoctor.domain.Customer;
-import tikaso.joosakur.homedoctor.repository.CustomerRepository;
+import tikaso.joosakur.homedoctor.domain.Report;
+import tikaso.joosakur.homedoctor.repository.ReportRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class ReportServiceImpl implements ReportService{
     
     @Autowired
-    private CustomerRepository customerRepository;
-    
+    private ReportRepository reportRepository;
+
     @Override
     @Transactional
-    public Customer createOrUpdate(Customer customer) {
-        return customerRepository.save(customer);
+    public Report createOrUpdate(Report report) {
+        return reportRepository.save(report);
     }
 
     @Override
-    public Customer find(String username) {
-        return customerRepository.findByUsername(username);
+    public Report findById(Long id) {
+        return reportRepository.findOne(id);
     }
-
-    @Override
-    public List<Customer> findAllCustomers() {
-        return customerRepository.findAll();
-    }
-
+    
 }

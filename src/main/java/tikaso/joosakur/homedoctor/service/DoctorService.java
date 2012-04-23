@@ -9,5 +9,9 @@ public interface DoctorService {
         
     public Doctor find(String username);
     
+    public Doctor findById(Long id);
+    
     public List<Doctor> findAllDoctors();
+    
+    public List<Integer> getFreeTimes(int year, int month, int day, Doctor doctor);
 }

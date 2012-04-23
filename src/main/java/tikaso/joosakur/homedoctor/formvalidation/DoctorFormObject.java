@@ -6,12 +6,12 @@ public class DoctorFormObject {
 
     @NotNull(message="Please insert first name.")
     @Size(min=2, max=15, message="Name must be 2-15 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-ZäöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
     private String firstName;
     
     @NotNull(message="Please insert last name.")
     @Size(min=2, max=20, message="Name must be 2-20 characters long.")
-    @Pattern(regexp="[a-zA-ZäöÄÖ][a-z A-ZäöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
+    @Pattern(regexp="[a-zA-Z\\äöÄÖ][a-zA-Z äöÄÖ\\-]+", message="Name should start with an alphabet and contain only alphabets, spaces and hyphen.")
     private String lastName;
 
     @NotNull(message="Please choose a username.")
