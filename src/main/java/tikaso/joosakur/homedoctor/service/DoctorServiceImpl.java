@@ -8,12 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 import tikaso.joosakur.homedoctor.domain.Doctor;
 import tikaso.joosakur.homedoctor.domain.Reservation;
 import tikaso.joosakur.homedoctor.repository.DoctorRepository;
+import tikaso.joosakur.homedoctor.repository.ReservationRepository;
 
 @Service
 public class DoctorServiceImpl implements DoctorService{
     
     @Autowired
     private DoctorRepository doctorRepository;
+    
+    @Autowired
+    private ReservationRepository reservationRepository;
     
     @Override
     @Transactional
@@ -38,22 +42,19 @@ public class DoctorServiceImpl implements DoctorService{
 
     @Override
     public List<Integer> getFreeTimes(int year, int month, int day, Doctor doctor) {
-        List<Integer> times = new ArrayList<Integer>();
+        List<Integer> freeTimes = new ArrayList<Integer>();
         for (int i = 8; i < 16; i++) {
-            times.add(i);
+            freeTimes.add(i);
         }
         
-        List<Reservation> reservations = doctor.getReservations();
         List<Integer> takenTimes = new ArrayList<Integer>();
-        for(Reservation reservation : reservations){
-            if(reservation.getOrderYear() != year || reservation.getOrderMonth() != month || reservation.getOrderDay() != day)
-                continue;
+        for(Reservation reservation : reservationRepository.findReservations(year, month, day, doctor)){
             takenTimes.add(reservation.getStartHour());
         }
         
-        times.removeAll(takenTimes);
+        freeTimes.removeAll(takenTimes);
         
-        return times;
+        return freeTimes;
     }
 
 }

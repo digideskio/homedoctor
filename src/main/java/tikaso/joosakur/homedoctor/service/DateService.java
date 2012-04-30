@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DateService {
+    
+    private static boolean testMode = true;
+    
     public boolean isValidNewReservationDate(int year, int month, int day){
         GregorianCalendar calendar = new GregorianCalendar();
         try {
@@ -16,13 +19,15 @@ public class DateService {
             return false;
         }
         
+        if(testMode) return true; //hyväksyy myös menneet ajat testauksen helpottamiseksi
+        
         int dayOfWeek = calendar.get(GregorianCalendar.DAY_OF_WEEK);
         if(dayOfWeek == GregorianCalendar.SATURDAY || dayOfWeek == GregorianCalendar.SUNDAY) 
             return false;
         
         GregorianCalendar nextValidDate = nextWeekday();
         
-        //if(calendar.before(nextValidDate)) return false; //valid reservations starting from tomorrow
+        if(calendar.before(nextValidDate)) return false; //valid reservations starting from tomorrow
         
         return true;
     }

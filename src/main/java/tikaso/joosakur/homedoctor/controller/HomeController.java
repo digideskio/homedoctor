@@ -77,14 +77,14 @@ public class HomeController {
         Doctor doctor = new Doctor();
         doctor.setFirstName("Matti");
         doctor.setLastName("Virtanen");
-        doctor.setUsername("masa");
+        doctor.setUsername("matti");
         doctor.setPassword("aabbcc");
         doctorService.createOrUpdate(doctor);
         
         doctor = new Doctor();
         doctor.setFirstName("Pekka");
         doctor.setLastName("Halonen");
-        doctor.setUsername("peku");
+        doctor.setUsername("pekka");
         doctor.setPassword("aabbcc");
         doctorService.createOrUpdate(doctor);
         
